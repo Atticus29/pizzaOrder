@@ -12,6 +12,8 @@
   background-color: white;
   margin-left: -1%;
   margin-right: -1.5%;
+  padding: 0;
+  padding-top: 1%;
   /*font-size: 70;*/
 }
 
@@ -49,7 +51,7 @@
 }
 
 #backgammon-img{
-  height: 200px;
+  height: 100px;
   width: auto;
 }
 
@@ -71,4 +73,9 @@ body{
 
 #addressBtn{
   display: none;
+}
+
+#row2{
+  text-align: center;
+  margin-bottom: 10%;
 }

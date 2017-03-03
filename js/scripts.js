@@ -198,6 +198,7 @@ $(function(){
     currentAddress = new Address(nameInput, streetInput, cityInput, stateInput, zipInput)
     console.log(currentAddress);
     $("#address-form").hide();
+    $("#addressBtn").remove();
   });
 
   $("#orderAgainBtn").click(function(){
@@ -224,7 +225,7 @@ $(function(){
       grandTotal += parseFloat(pizza.calculatePrice());
     })
     $(".grand-toal").remove();
-    $("#order-summary").after("<p class='grand-total'>Grand total is: $ " + grandTotal + ".</p>");
+    $("#order-summary").after("<p class='grand-total'>Grand total is: $ " + grandTotal.toFixed(2) + ".</p>");
     $(".grand-total").after("<p class='address-report'>Order will be sent to:<br>" + currentAddress.reportAddress() + "</p>");
   });
 
