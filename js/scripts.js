@@ -114,8 +114,6 @@ var testOrders = function(){
 
 testOrders();
 
-
-// Validate inputs
 // Make deliveryPrice a function
 
 // Front End

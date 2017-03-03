@@ -9,11 +9,128 @@
   crossorigin="anonymous"></script>
   <!-- <script src="js/jquery-3.1.1.js"></script> -->
   <script src="js/scripts.js"></script>
-  <title></title>
+  <title>Order some pizza</title>
 </head>
 <body>
   <div class="container">
+    <div class="jumbotron">
+      <h1>Pizza Order Form</h1>
+    </div>
+    <form id="pizzaForm" class="form-horizontal">
+      <div class="row" id="row1">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Select Size and Toppings</h2>
+          </div>
+          <div class="panel-body" id="row1-body">
+            <div class="col-md-4 col-sm-12" id="sizeSection">
+              <h3 class="selection-criterion">Size</h3>
+              <div class="form-group">
+                <label>
+                  <input type="radio" name="size" value="Large">
+                  Large
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="size" value="Medium">
+                  Medium
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="size" value="Small">
+                  Small
+                </label>
+                <br>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12" id="veggieSection">
+              <h3 class="selection-criterion">Vegetable Toppings</h3>
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" name="veggie" value="Mushrooms">
+                  Mushrooms
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="veggie" value="Olives">
+                  Olives
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="veggie" value="Bell Peppers">
+                  Bell Peppers
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="veggie" value="Pineapple">
+                  Pineapple
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="veggie" value="Onions">
+                  Onions
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="veggie" value="Spinach">
+                  Spinach
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="veggie" value="Cheddar Cheese">
+                  Cheddar Cheese
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="veggie" value="Jalapeno Peppers">
+                  Jalapeno Peppers
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="veggie" value="Feta Cheese">
+                  Feta Cheese
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="veggie" value="Roasted Red Peppers">
+                  Roasted Red Peppers
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="veggie" value="Diced Tomatoes">
+                  Diced Tomatoes
+                </label>
+                <br>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12" id="meatSection">
+              <h3 class="selection-criterion">Meat Toppings</h3>
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" name="meat" value="Pepperoni">
+                  Pepperoni
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="meat" value="Sausage">
+                  Sausage
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" name="meat" value="Chicken">
+                  Chicken
+                </label>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="row2">
+        <button type="submit" class="btn btn-success" id="submitBtn">Order</button>
+      </div>
 
+    </form>
   </div>
 </body>
 </html>
