@@ -1,5 +1,13 @@
 // Back End
 
+function Address(name, street, city, state, zip){
+  this.name = name;
+  this.street = street;
+  this.city = city;
+  this.state = state;
+  this.zip = zip;
+}
+
 function Pizza (size, numVeggies, numMeats, deliveryStatus){
   this.size = size;
   this.numVeggies = numVeggies;
@@ -149,6 +157,10 @@ $(function(){
     var deliveryStatus = (($("input:radio[name=service]:checked").val()) === "true");
     // console.log(deliveryStatus);
     var currentPizza = new Pizza (sizeInput, veggieInputArray.length, meatInputArray.length, deliveryStatus);
+    if(currentPizza.deliveryStatus){
+      console.log("It's a delivery pizza");
+      $("#addressBtn").show();
+    }
     // console.log(currentPizza);
     // console.log(currentPizza.calculatePrice());
     // console.log(currentPizza.reportOrderBasic());
@@ -163,12 +175,34 @@ $(function(){
     });
 
   });
+
+  $("#addressBtn").click(function(){
+    // console.log("got into address button click event");
+    $("#address-form").show();
+    // $("#results").hide();
+  });
+
+  $("#address-form").submit(function(){
+    event.preventDefault();
+    console.log("Got into address form submission");
+    var nameInput = $("#usrName").val();
+    var streetInput = $("#usrStreet").val();
+    var cityInput = $("#usrCity").val();
+    var stateInput = $("#usrState").val();
+    var zipInput = $("#usrZip").val();
+    console.log(nameInput, streetInput, cityInput, stateInput, zipInput);
+    var currentAddress = new Address(nameInput, streetInput, cityInput, stateInput, zipInput)
+    console.log(currentAddress);
+    $("#address-form").hide();
+  });
+
   $("#orderAgainBtn").click(function(){
     event.preventDefault();
     $("#pizzaForm").show();
     $("#orderAgain").hide();
     $("#results").hide();
   });
+
   $("#checkout-btn").click(function(){
     event.preventDefault();
     $("#checkout-btn").hide();

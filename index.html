@@ -146,6 +146,29 @@
 
       </div>
     </form>
+    <form class="form-horizontal" id="address-form">
+      <div class="form-group">
+        <label for="usrName">Full Name:</label>
+        <input type="text" id="usrName" required>
+      </div>
+      <div class="form-group">
+        <label for="usrStreet">Street:</label>
+        <input type="text" id="usrStreet" required>
+      </div>
+      <div class="form-group">
+        <label for="usrCity">City:</label>
+        <input type="text" id="usrCity" required>
+      </div>
+      <div class="form-group">
+        <label for="usrState">State:</label>
+        <input type="text" id="usrState" required>
+      </div>
+      <div class="form-group">
+        <label for="usrZip">Zipcode:</label>
+        <input type="number" id="usrZip" required>
+      </div>
+      <button type="submit" class="btn btn-success">Submit Address</button>
+    </form>
     <div id="results">
       <h5>Order Summary</h5>
       <ol>
@@ -156,6 +179,7 @@
       </ul>
       <button type="button" class="btn btn-danger" id="checkout-btn">Checkout</button>
       <button type="button" class="btn btn-danger" id="backBtn">Back</button>
+      <button type="button" class="btn btn-info" id="addressBtn">Add delivery address</button>
     </div>
     <div id="orderAgain">
       <button type="button" class="btn btn-success" id="orderAgainBtn">Continue Shopping</button>

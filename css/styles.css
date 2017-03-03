@@ -64,3 +64,11 @@ body{
   background-position: center;
   background-size: cover;
 }
+
+#address-form{
+  display: none;
+}
+
+#addressBtn{
+  display: none;
+}
