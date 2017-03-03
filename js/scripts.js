@@ -112,11 +112,31 @@ var testOrders = function(){
   console.log(pizza1.calculatePrice());
 }
 
-testOrders();
+// testOrders();
 
 // Make deliveryPrice a function
 
 // Front End
 $(function(){
-
+  var checkoutBag = [];
+  $("#pizzaForm").submit(function(){
+    event.preventDefault();
+    var sizeInput = $("input:radio[name=size]:checked").val();
+    // console.log(sizeInput);
+    var veggieInputArray = []
+    $("input:checkbox[name=veggie]:checked").each(function(){
+      veggieInputArray.push($(this).val());
+    })
+    // console.log(veggieInputArray);
+    var meatInputArray = [];
+    $("input:checkbox[name=meat]:checked").each(function(){
+      meatInputArray.push($(this).val());
+    })
+    // console.log(meatInputArray);
+    var deliveryStatus = (($("input:radio[name=service]:checked").val()) === "true");
+    console.log(deliveryStatus);
+    var currentPizza = new Pizza (sizeInput, veggieInputArray.length, meatInputArray.length, deliveryStatus);
+    console.log(currentPizza);
+    console.log(currentPizza.calculatePrice());
+  });
 });
