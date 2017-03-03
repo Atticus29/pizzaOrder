@@ -10,6 +10,8 @@
 .jumbotron{
   text-align: center;
   background-color: white;
+  margin-left: -1%;
+  margin-right: -1.5%;
   /*font-size: 70;*/
 }
 
@@ -23,6 +25,11 @@
 
 #results{
   display: none;
+  color: white;
+}
+
+#orderAgainBtn{
+    margin-top: 1%;
 }
 
 #orderAgain{
@@ -39,4 +46,21 @@
 
 #backBtn{
   display: none;
+}
+
+#backgammon-img{
+  height: 200px;
+  width: auto;
+}
+
+body{
+  padding-top: 3%;
+  background-color: black;
+}
+
+#row1-body{
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.8) 100%),url("../img/pizza-bg.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
