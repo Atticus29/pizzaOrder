@@ -24,10 +24,19 @@ Pizza.prototype.isValidNumVeggies = function(){
   }
 }
 
+Pizza.prototype.isValidNumMeats = function(){
+  if((typeof this.numMeats === "number") && (this.numMeats >= 0) && (Math.trunc(this.numMeats) === this.numMeats)){
+    return true;
+  } else{
+    console.log("invalid number of meats");
+    return false;
+  }
+}
+
 Pizza.prototype.calculatePrice = function (){
   var price = 0;
   // validate
-  if(this.isValidSize() && this.isValidNumVeggies()){
+  if(this.isValidSize() && this.isValidNumVeggies() && this.isValidNumMeats()){
     // Add size to price
     if(this.size === "Large"){
       price += 13;
@@ -62,7 +71,7 @@ Pizza.prototype.calculatePrice = function (){
     return price;
   } else{
     // alert("Please enter a valid pizza size, number of meat toppings, veggie toppings, and delivery status")
-    console.log("this should never happen");
+    // console.log("this should never happen");
   }
 }
 
@@ -87,6 +96,8 @@ var testOrders = function(){
   console.log(pizza1.calculatePrice());
   var pizza1 = new Pizza("Large", 1, 1.5, false); // should throw error
   console.log(pizza1.calculatePrice());
+  var pizza1 = new Pizza("Large", 1, 1.5, false); // should throw error
+  console.log(pizza1.calculatePrice());
   var pizza1 = new Pizza("Any", 1, 1, false); // should throw error
   console.log(pizza1.calculatePrice());
   var pizza1 = new Pizza("Medium", 1, 1, false); // should throw error
@@ -96,6 +107,8 @@ var testOrders = function(){
   var pizza1 = new Pizza("Medium", -1, 1, false); // should throw error
   console.log(pizza1.calculatePrice());
   var pizza1 = new Pizza("medium", 1, -3, false); // should throw error
+  console.log(pizza1.calculatePrice());
+  var pizza1 = new Pizza("Medium", 1, -3, false); // should throw error
   console.log(pizza1.calculatePrice());
 }
 
