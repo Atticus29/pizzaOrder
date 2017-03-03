@@ -175,7 +175,7 @@ $(function(){
     $("#order-summary").empty();
     $(".grand-toal").remove();
     checkoutBag.forEach(function(pizza){
-      $("#order-summary").append("<li> <span class='pizza-item'>" + pizza.reportOrderBasic()+ "</span></li>");
+      $("#order-summary").append("<li><span class='pizza-item'> this one" + pizza.reportOrderBasic()+ "</span></li>");
     });
 
   });

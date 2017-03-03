@@ -32,6 +32,11 @@
 
 #orderAgainBtn{
     margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#checkout-btn{
+  margin-bottom: 1%;
 }
 
 #orderAgain{
@@ -69,6 +74,10 @@ body{
 
 #address-form{
   display: none;
+  color: white;
+}
+#address-form input{
+  color: black;
 }
 
 #addressBtn{
