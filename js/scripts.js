@@ -8,6 +8,10 @@ function Address(name, street, city, state, zip){
   this.zip = zip;
 }
 
+Address.prototype.reportAddress = function(){
+  return (this.name + "<br>" + this.street + "<br>" + this.city + ", " + this.state + " " + this.zip);
+}
+
 function Pizza (size, numVeggies, numMeats, deliveryStatus){
   this.size = size;
   this.numVeggies = numVeggies;
@@ -191,7 +195,7 @@ $(function(){
     var stateInput = $("#usrState").val();
     var zipInput = $("#usrZip").val();
     console.log(nameInput, streetInput, cityInput, stateInput, zipInput);
-    var currentAddress = new Address(nameInput, streetInput, cityInput, stateInput, zipInput)
+    currentAddress = new Address(nameInput, streetInput, cityInput, stateInput, zipInput)
     console.log(currentAddress);
     $("#address-form").hide();
   });
@@ -217,10 +221,11 @@ $(function(){
     $("#order-summary").append("<hr>");
     var grandTotal = 0;
     checkoutBag.forEach(function(pizza){
-      grandTotal += pizza.calculatePrice();
+      grandTotal += parseFloat(pizza.calculatePrice());
     })
     $(".grand-toal").remove();
-    $("#order-summary").after("<p class='grand-toal'>Grand total is: $ " + grandTotal + ".</p>")
+    $("#order-summary").after("<p class='grand-total'>Grand total is: $ " + grandTotal + ".</p>");
+    $(".grand-total").after("<p class='address-report'>Order will be sent to:<br>" + currentAddress.reportAddress() + "</p>");
   });
 
   $("#backBtn").click(function(){
