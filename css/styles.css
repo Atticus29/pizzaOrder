@@ -30,9 +30,13 @@
 }
 .pizza-item {
   cursor: pointer;
-  color: #0088cc;
+  /*color: #0088cc;*/
 }
 
 .pizza-item:hover {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+}
+
+#backBtn{
+  display: none;
 }

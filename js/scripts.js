@@ -152,17 +152,22 @@ $(function(){
     $("#orderAgain").show();
     $("#results").show();
     $("#order-summary").empty();
+    $(".grand-toal").remove();
     checkoutBag.forEach(function(pizza){
         $("#order-summary").append("<li class='pizza-item'>" + pizza.reportOrder()+ "</li>");
     });
 
   });
   $("#orderAgainBtn").click(function(){
+    event.preventDefault();
     $("#pizzaForm").show();
     $("#orderAgain").hide();
     $("#results").hide();
   });
   $("#checkout-btn").click(function(){
+    event.preventDefault();
+    $("#checkout-btn").hide();
+    $("#backBtn").show();
     $("#pizzaForm").hide();
     $("#orderAgain").hide();
     $("#results").show();
@@ -175,6 +180,13 @@ $(function(){
     checkoutBag.forEach(function(pizza){
       grandTotal += pizza.calculatePrice();
     })
-    $("#order-summary").after("<p>Grand total is: $" + grandTotal + ".</p>")
+    $(".grand-toal").remove();
+    $("#order-summary").after("<p class='grand-toal'>Grand total is: $" + grandTotal + ".</p>")
   });
+
+  $("#backBtn").click(function(){
+    $("#backBtn").hide();
+    $("#orderAgain").show();
+    $("#checkout-btn").show();
+  })
 });
