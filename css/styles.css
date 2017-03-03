@@ -2,17 +2,37 @@
   text-decoration: underline;
   text-align: left;
 }
+
 .panel-title{
   font-size: 200%;
 }
+
 .jumbotron{
   text-align: center;
   background-color: white;
   /*font-size: 70;*/
 }
+
 #submitBtn{
   text-align: right;
 }
+
 #row1-body{
   border-bottom: 0; /*this isn't working*/
+}
+
+#results{
+  display: none;
+}
+
+#orderAgain{
+  display: none;
+}
+.pizza-item {
+  cursor: pointer;
+  color: #0088cc;
+}
+
+.pizza-item:hover {
+  text-decoration: underline;
 }

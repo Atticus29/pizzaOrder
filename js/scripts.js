@@ -33,6 +33,14 @@ Pizza.prototype.isValidNumMeats = function(){
   }
 }
 
+Pizza.prototype.reportOrder = function(){
+  if(this.deliveryStatus === true){
+    return this.size + " pizza with " + this.numVeggies + " vegetable topping(s) and " + this.numMeats + " meat topping(s) for delivery = $" + this.calculatePrice();
+  } else{
+    return (this.size + " pizza with " + this.numVeggies + " vegetable toppings and " + this.numMeats + " meat toppings for pickup = $" + this.calculatePrice());
+  }
+}
+
 Pizza.prototype.calculatePrice = function (){
   var price = 0;
   // validate
@@ -137,6 +145,21 @@ $(function(){
     console.log(deliveryStatus);
     var currentPizza = new Pizza (sizeInput, veggieInputArray.length, meatInputArray.length, deliveryStatus);
     console.log(currentPizza);
-    console.log(currentPizza.calculatePrice());
+    // console.log(currentPizza.calculatePrice());
+    console.log(currentPizza.reportOrder());
+    checkoutBag.push(currentPizza);
+    $("#pizzaForm").hide();
+    $("#orderAgain").show();
+    $("#results").show();
+    $("#order-summary").empty();
+    checkoutBag.forEach(function(pizza){
+        $("#order-summary").append("<li class='pizza-item'>" + pizza.reportOrder()+ "</li>");
+    });
+
+  });
+  $("#orderAgainBtn").click(function(){
+    $("#pizzaForm").show();
+    $("#orderAgain").hide();
+    $("#results").hide();
   });
 });
