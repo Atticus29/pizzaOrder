@@ -224,8 +224,9 @@ $(function(){
     checkoutBag.forEach(function(pizza){
       grandTotal += parseFloat(pizza.calculatePrice());
     })
-    $(".grand-toal").remove();
+    $(".grand-total").remove();
     $("#order-summary").after("<p class='grand-total'>Grand total is: $ " + grandTotal.toFixed(2) + ".</p>");
+    $(".address-report").remove();
     $(".grand-total").after("<p class='address-report'>Order will be sent to:<br>" + currentAddress.reportAddress() + "</p>");
   });
 
