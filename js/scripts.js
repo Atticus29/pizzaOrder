@@ -19,7 +19,7 @@ Pizza.prototype.isValidNumVeggies = function(){
   if((typeof this.numVeggies === "number") && (this.numVeggies >= 0) && (Math.trunc(this.numVeggies) === this.numVeggies)){
     return true;
   } else{
-    console.log("invalid number of veggies");
+    // console.log("invalid number of veggies");
     return false;
   }
 }
@@ -28,12 +28,16 @@ Pizza.prototype.isValidNumMeats = function(){
   if((typeof this.numMeats === "number") && (this.numMeats >= 0) && (Math.trunc(this.numMeats) === this.numMeats)){
     return true;
   } else{
-    console.log("invalid number of meats");
+    // console.log("invalid number of meats");
     return false;
   }
 }
 
-Pizza.prototype.reportOrder = function(){
+Pizza.prototype.reportOrderBasic = function(){
+  return "1 " + this.size + " pizza";
+}
+
+Pizza.prototype.reportOrderVerbose = function(){
   if(this.deliveryStatus === true){
     return this.size + " pizza with " + this.numVeggies + " vegetable topping(s) and " + this.numMeats + " meat topping(s) for delivery = $" + this.calculatePrice();
   } else{
@@ -76,7 +80,8 @@ Pizza.prototype.calculatePrice = function (){
       var deliveryPrice = 10;
       price += deliveryPrice;
     }
-    return price;
+    var rounded = (Math.round(price*100))/100;
+    return (rounded.toFixed(2));
   } else{
     // alert("Please enter a valid pizza size, number of meat toppings, veggie toppings, and delivery status")
     // console.log("this should never happen");
@@ -142,11 +147,11 @@ $(function(){
     })
     // console.log(meatInputArray);
     var deliveryStatus = (($("input:radio[name=service]:checked").val()) === "true");
-    console.log(deliveryStatus);
+    // console.log(deliveryStatus);
     var currentPizza = new Pizza (sizeInput, veggieInputArray.length, meatInputArray.length, deliveryStatus);
-    console.log(currentPizza);
+    // console.log(currentPizza);
     // console.log(currentPizza.calculatePrice());
-    console.log(currentPizza.reportOrder());
+    // console.log(currentPizza.reportOrderBasic());
     checkoutBag.push(currentPizza);
     $("#pizzaForm").hide();
     $("#orderAgain").show();
@@ -154,7 +159,7 @@ $(function(){
     $("#order-summary").empty();
     $(".grand-toal").remove();
     checkoutBag.forEach(function(pizza){
-        $("#order-summary").append("<li class='pizza-item'>" + pizza.reportOrder()+ "</li>");
+      $("#order-summary").append("<li> <span class='pizza-item'>" + pizza.reportOrderBasic()+ "</span></li>");
     });
 
   });
@@ -173,7 +178,7 @@ $(function(){
     $("#results").show();
     $("#order-summary").empty();
     checkoutBag.forEach(function(pizza){
-        $("#order-summary").append("<li class='pizza-item'>" + pizza.reportOrder()+ "</li>");
+      $("#order-summary").append("<li><span class='pizza-item'>" + pizza.reportOrderBasic()+ "</span></li>");
     });
     $("#order-summary").append("<hr>");
     var grandTotal = 0;
@@ -181,12 +186,24 @@ $(function(){
       grandTotal += pizza.calculatePrice();
     })
     $(".grand-toal").remove();
-    $("#order-summary").after("<p class='grand-toal'>Grand total is: $" + grandTotal + ".</p>")
+    $("#order-summary").after("<p class='grand-toal'>Grand total is: $ " + grandTotal + ".</p>")
   });
 
   $("#backBtn").click(function(){
+    event.preventDefault();
     $("#backBtn").hide();
     $("#orderAgain").show();
     $("#checkout-btn").show();
-  })
+  });
+
+  $(".pizza-item").click(function(){
+    event.preventDefault();
+    console.log("Got here");
+    // console.log($(this).index());
+  });
+
+  $(".test").click(function(){
+    event.preventDefault();
+    console.log("yes");
+  });
 });
