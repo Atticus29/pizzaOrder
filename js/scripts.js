@@ -162,4 +162,19 @@ $(function(){
     $("#orderAgain").hide();
     $("#results").hide();
   });
+  $("#checkout-btn").click(function(){
+    $("#pizzaForm").hide();
+    $("#orderAgain").hide();
+    $("#results").show();
+    $("#order-summary").empty();
+    checkoutBag.forEach(function(pizza){
+        $("#order-summary").append("<li class='pizza-item'>" + pizza.reportOrder()+ "</li>");
+    });
+    $("#order-summary").append("<hr>");
+    var grandTotal = 0;
+    checkoutBag.forEach(function(pizza){
+      grandTotal += pizza.calculatePrice();
+    })
+    $("#order-summary").after("<p>Grand total is: $" + grandTotal + ".</p>")
+  });
 });
