@@ -8,7 +8,6 @@ function containsObject(obj, list) {
             return true;
         }
     }
-
     return false;
 }
 
@@ -42,9 +41,7 @@ Pizza.prototype.isValidSize = function(){
 Pizza.prototype.isValidNumVeggies = function(){
   if((typeof this.numVeggies === "number") && (this.numVeggies >= 0) && (Math.trunc(this.numVeggies) === this.numVeggies)){
     return true;
-  } else{
-    // console.log("invalid number of veggies");
-    return false;
+  } else{    return false;
   }
 }
 
@@ -52,7 +49,6 @@ Pizza.prototype.isValidNumMeats = function(){
   if((typeof this.numMeats === "number") && (this.numMeats >= 0) && (Math.trunc(this.numMeats) === this.numMeats)){
     return true;
   } else{
-    // console.log("invalid number of meats");
     return false;
   }
 }
@@ -79,7 +75,6 @@ Pizza.prototype.calculatePrice = function (){
     } else if (this.size === "Medium"){
       price += 11.50;
     } else {
-      // console.log("a Small was ordered");
       price += 10;
     }
     // Add veggie toppings to price
@@ -87,7 +82,6 @@ Pizza.prototype.calculatePrice = function (){
       if(i === 1){
         price += 0.5;
       } else{
-        // console.log(i + " topping being added to the price");
         price += 0.3;
       }
     }
@@ -96,7 +90,6 @@ Pizza.prototype.calculatePrice = function (){
       if(i === 1){
         price += 1;
       } else{
-        // console.log(i + " topping being added to the price");
         price += 0.9;
       }
     }
@@ -107,8 +100,6 @@ Pizza.prototype.calculatePrice = function (){
     var rounded = (Math.round(price*100))/100;
     return (rounded.toFixed(2));
   } else{
-    // alert("Please enter a valid pizza size, number of meat toppings, veggie toppings, and delivery status")
-    // console.log("this should never happen");
   }
 }
 
@@ -149,7 +140,7 @@ var testOrders = function(){
   console.log(pizza1.calculatePrice());
 }
 
-// testOrders();
+testOrders();
 
 // Make deliveryPrice a function
 
@@ -160,27 +151,19 @@ $(function(){
   $("#pizzaForm").submit(function(){
     event.preventDefault();
     var sizeInput = $("input:radio[name=size]:checked").val();
-    // console.log(sizeInput);
     var veggieInputArray = []
     $("input:checkbox[name=veggie]:checked").each(function(){
       veggieInputArray.push($(this).val());
     })
-    // console.log(veggieInputArray);
     var meatInputArray = [];
     $("input:checkbox[name=meat]:checked").each(function(){
       meatInputArray.push($(this).val());
     })
-    // console.log(meatInputArray);
     var deliveryStatus = (($("input:radio[name=service]:checked").val()) === "true");
-    // console.log(deliveryStatus);
     var currentPizza = new Pizza (sizeInput, veggieInputArray.length, meatInputArray.length, deliveryStatus);
     if(currentPizza.deliveryStatus){
-      console.log("It's a delivery pizza");
       $("#addressBtn").show();
     }
-    // console.log(currentPizza);
-    // console.log(currentPizza.calculatePrice());
-    // console.log(currentPizza.reportOrderBasic());
     checkoutBag.push(currentPizza);
     $("#pizzaForm").hide();
     $("#orderAgain").show();
@@ -188,15 +171,12 @@ $(function(){
     $("#order-summary").empty();
     $(".grand-toal").remove();
     checkoutBag.forEach(function(pizza){
-      $("#order-summary").append("<li><span class='pizza-item'> this one" + pizza.reportOrderBasic()+ "</span></li>");
+      $("#order-summary").append("<li><span class='pizza-item'>" + pizza.reportOrderBasic()+ "</span></li>");
     });
-
   });
 
   $("#addressBtn").click(function(){
-    // console.log("got into address button click event");
     $("#address-form").show();
-    // $("#results").hide();
   });
 
   $("#address-form").submit(function(){
@@ -248,33 +228,11 @@ $(function(){
   });
 
   $("#order-summary").last().on("click", ".pizza-item", function(){
-    event.preventDefault();
-    // console.log($(".pizza-item").index($(this).get()));
-    var checkoutBagIndexToGet = $(".pizza-item").index($(this));
+    event.preventDefault();    var checkoutBagIndexToGet = $(".pizza-item").index($(this));
     var replacement = checkoutBag[checkoutBagIndexToGet].reportOrderVerbose();
-
-    // console.log(replacement);
-    // $(".pizza-item:nth-child(" + checkoutBagIndexToGet + 1 + ")").after("<li>" + replacement + "</li>");
-    // $("#detailed-ordered-items").show();
-    console.log(replacementTracker);
     if(!containsObject(replacement, replacementTracker)){
       $("#detailed-ordered-items").append("<li class='pizza-extended'>" + replacement + "</li>")
     }
     replacementTracker.push(replacement);
-    // $("li.pizza-item:nth-child(" +checkoutBagIndexToGet+1 + ")").remove();
-
-
-    // console.log();
-    // console.log("Got here");
-  });
-
-  // $(".pizza-item").click(function(){
-  //   event.preventDefault();
-  //   console.log("Got here");
-  // });
-
-  $(".test").click(function(){
-    event.preventDefault();
-    console.log("yes");
   });
 });
