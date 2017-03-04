@@ -7,7 +7,7 @@
 
 ## Description
 
-A website to order and track pizza orders....
+A website to order and track pizza orders. Users should be able to order more than one pizza, only get prompted to enter an address if they are ordering any one of their pizzas for delivery, navigate
 
 ### Specifications
 
@@ -45,7 +45,7 @@ There are many options available, but we recommend using a terminal program call
 
 ## Known Bugs
 
-There are no known bugs. I'd be interested to know if you find any.
+There is currently no way to remove orders, and sometimes the only way to get to checkout again is to go through the order page again, thereby forcing you to buy a new pizza. Ran out of time to correct this.
 
 ## Support and contact details
 

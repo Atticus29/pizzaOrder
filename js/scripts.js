@@ -190,6 +190,7 @@ $(function(){
     currentAddress = new Address(nameInput, streetInput, cityInput, stateInput, zipInput)
     $("#address-form").hide();
     $("#addressBtn").remove();
+    $("#orderAgain").show();
   });
 
   $("#orderAgainBtn").click(function(){
