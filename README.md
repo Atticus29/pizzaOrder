@@ -1,13 +1,13 @@
 
 # A website to order and track pizza orders
 
-#### 3 March, 2017, v.1.0.0
+#### 3 March, 2017, v.1.0.22
 
 #### By Mark Fisher
 
 ## Description
 
-A website to order and track pizza orders. Users should be able to order more than one pizza, only get prompted to enter an address if they are ordering any one of their pizzas for delivery, navigate
+A website to order and track pizza orders. Users should be able to order more than one pizza, only get prompted to enter an address if they are ordering any one of their pizzas for delivery, navigate _somewhat_ intuitively between address submission, checkout, and the order form.
 
 ### Specifications
 
