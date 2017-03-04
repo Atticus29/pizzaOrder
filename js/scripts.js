@@ -2,13 +2,13 @@
 
 // containsObject was stolen from the internet
 function containsObject(obj, list) {
-    var i;
-    for (i = 0; i < list.length; i++) {
-        if (list[i] === obj) {
-            return true;
-        }
+  var i;
+  for (i = 0; i < list.length; i++) {
+    if (list[i] === obj) {
+      return true;
     }
-    return false;
+  }
+  return false;
 }
 
 function Address(name, street, city, state, zip){
@@ -177,6 +177,7 @@ $(function(){
 
   $("#addressBtn").click(function(){
     $("#address-form").show();
+    $("#results").hide();
   });
 
   $("#address-form").submit(function(){
