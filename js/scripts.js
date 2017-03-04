@@ -1,5 +1,17 @@
 // Back End
 
+// containsObject was stolen from the internet
+function containsObject(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i] === obj) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 function Address(name, street, city, state, zip){
   this.name = name;
   this.street = street;
@@ -144,6 +156,7 @@ var testOrders = function(){
 // Front End
 $(function(){
   var checkoutBag = [];
+  var replacementTracker = [];
   $("#pizzaForm").submit(function(){
     event.preventDefault();
     var sizeInput = $("input:radio[name=size]:checked").val();
@@ -188,15 +201,12 @@ $(function(){
 
   $("#address-form").submit(function(){
     event.preventDefault();
-    console.log("Got into address form submission");
     var nameInput = $("#usrName").val();
     var streetInput = $("#usrStreet").val();
     var cityInput = $("#usrCity").val();
     var stateInput = $("#usrState").val();
     var zipInput = $("#usrZip").val();
-    console.log(nameInput, streetInput, cityInput, stateInput, zipInput);
     currentAddress = new Address(nameInput, streetInput, cityInput, stateInput, zipInput)
-    console.log(currentAddress);
     $("#address-form").hide();
     $("#addressBtn").remove();
   });
@@ -237,11 +247,31 @@ $(function(){
     $("#checkout-btn").show();
   });
 
-  $(".pizza-item").click(function(){
+  $("#order-summary").last().on("click", ".pizza-item", function(){
     event.preventDefault();
-    console.log("Got here");
-    // console.log($(this).index());
+    // console.log($(".pizza-item").index($(this).get()));
+    var checkoutBagIndexToGet = $(".pizza-item").index($(this));
+    var replacement = checkoutBag[checkoutBagIndexToGet].reportOrderVerbose();
+
+    // console.log(replacement);
+    // $(".pizza-item:nth-child(" + checkoutBagIndexToGet + 1 + ")").after("<li>" + replacement + "</li>");
+    // $("#detailed-ordered-items").show();
+    console.log(replacementTracker);
+    if(!containsObject(replacement, replacementTracker)){
+      $("#detailed-ordered-items").append("<li class='pizza-extended'>" + replacement + "</li>")
+    }
+    replacementTracker.push(replacement);
+    // $("li.pizza-item:nth-child(" +checkoutBagIndexToGet+1 + ")").remove();
+
+
+    // console.log();
+    // console.log("Got here");
   });
+
+  // $(".pizza-item").click(function(){
+  //   event.preventDefault();
+  //   console.log("Got here");
+  // });
 
   $(".test").click(function(){
     event.preventDefault();

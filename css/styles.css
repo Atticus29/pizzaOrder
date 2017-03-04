@@ -42,6 +42,11 @@
 #orderAgain{
   display: none;
 }
+
+.pizza-extended{
+  color: red;
+}
+
 .pizza-item {
   cursor: pointer;
   color: #0088cc;
